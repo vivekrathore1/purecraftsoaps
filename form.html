@@ -1,0 +1,9 @@
+<div id="contact-container"></div>
+
+<script>
+fetch('form.html')
+.then(res => res.text())
+.then(html => {
+    document.getElementById('contact-container').innerHTML = html;
+});
+</script>
