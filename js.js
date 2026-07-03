@@ -1,7 +1,7 @@
 <script>
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzjQ0fzcZNausWC6EvlttbFr_xW9EgO8SkhubNJp18X/dev;
+"https://script.google.com/macros/s/AKfycbxxxpgdB_pgdK0vWqmvT9A97XSpOTSYSP_UUzma33HYNYZDOSVWuddUV_mfhW1nuTdpZg/exec;
 
 document
 .getElementById("contactForm")
