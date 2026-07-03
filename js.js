@@ -28,7 +28,7 @@ document
   };
 
   const response = await fetch(
-    "1RW4uXSd5gusi16qR0sNuQ0uPjviW9fBdd2vBNDTpUCA_VyxNxp4_B3I4",
+    "https://script.google.com/macros/s/AKfycbwvJZDhhdRHbiKSKlbpqB4wUPFcQv9dwS0Ob7qlyJDEqtLK_rKcRtIx78DWPawa_u4WwQ/exec",
     {
       method: "POST",
       body: JSON.stringify(formData)
