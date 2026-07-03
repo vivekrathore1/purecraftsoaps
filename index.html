@@ -388,100 +388,87 @@
 </footer>
 
 <script>
- 
+<script src="config.js"></script>
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbydIMqsQqYK7kLYj0vQKubFv3X1NQB4zcUFbedVoVb3azD0c4Q41QpKW5eIcJZzCKGbdg/exec";
+<script>
 
-document
-.getElementById("contactForm")
-.addEventListener(
-"submit",
-async function(e){
+document.getElementById("contactForm")
+.addEventListener("submit", async function(e){
 
-e.preventDefault();
+  e.preventDefault();
 
-const btn =
-document.getElementById("submitBtn");
+  const btn =
+  document.getElementById("submitBtn");
 
-btn.textContent = "Sending...";
+  btn.innerHTML = "Sending...";
 
-const formData = {
+  const formData = {
 
-name:
-document.querySelector('[name="name"]').value,
+    name:
+    document.querySelector('[name="name"]').value,
 
-email:
-document.querySelector('[name="email"]').value,
+    email:
+    document.querySelector('[name="email"]').value,
 
-company:
-document.querySelector('[name="company"]').value,
+    company:
+    document.querySelector('[name="company"]').value,
 
-country:
-document.querySelector('[name="country"]').value,
+    country:
+    document.querySelector('[name="country"]').value,
 
-product:
-document.querySelector('[name="product"]').value,
+    product:
+    document.querySelector('[name="product"]').value,
 
-quantity:
-document.querySelector('[name="quantity"]').value,
+    quantity:
+    document.querySelector('[name="quantity"]').value,
 
-message:
-document.querySelector('[name="message"]').value
+    message:
+    document.querySelector('[name="message"]').value
 
-};
+  };
 
-try {
+  try {
 
-const response =
-await fetch(
-SCRIPT_URL,
-{
-method:"POST",
-body:JSON.stringify(formData)
-}
-);
+    const response =
+    await fetch(
+      CONFIG.SCRIPT_URL,
+      {
+        method: "POST",
+        body: JSON.stringify(formData)
+      }
+    );
 
-const result =
-await response.json();
+    const result =
+    await response.json();
 
-if(result.result==="success"){
+    if(result.result === "success"){
 
-document
-.getElementById("successMsg")
-.style.display="block";
+      document.getElementById("successMsg")
+      .style.display = "block";
 
-btn.textContent =
-"Inquiry Sent ✓";
+      document.getElementById("contactForm")
+      .reset();
 
-document
-.getElementById("contactForm")
-.reset();
+      btn.innerHTML =
+      "Inquiry Sent ✓";
 
-}
-else{
+    } else {
 
-alert(
-"Error : " +
-result.message
-);
+      alert(result.message);
 
-btn.textContent =
-"Send Inquiry ✦";
+      btn.innerHTML =
+      "Send Inquiry ✦";
 
-}
+    }
 
-}
-catch(err){
+  } catch(err){
 
-alert(
-"Submission failed."
-);
+    alert("Submission failed");
 
-btn.textContent =
-"Send Inquiry ✦";
+    btn.innerHTML =
+    "Send Inquiry ✦";
 
-}
+  }
 
 });
 
