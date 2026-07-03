@@ -1,46 +1,98 @@
 <script>
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbysILpisfJopG6ht3PQ5v_mr2HwooM-aLWUaPz1iaxQ6T_pLsuYGG3WtWDoGcZsAFVoYA/exec";
+
 document
 .getElementById("contactForm")
-.addEventListener("submit", async function(e){
+.addEventListener(
+"submit",
+async function(e){
 
-  e.preventDefault();
+e.preventDefault();
 
-  const formData = {
-    name: document.querySelector(
-      'input[placeholder="Your Full Name *"]'
-    ).value,
+const btn =
+document.getElementById("submitBtn");
 
-    email: document.querySelector(
-      'input[type="email"]'
-    ).value,
+btn.textContent = "Sending...";
 
-    company: document.querySelector(
-      'input[placeholder="Company / Business Name"]'
-    ).value,
+const formData = {
 
-    country: document.querySelector(
-      'input[placeholder="Country *"]'
-    ).value,
+name:
+document.querySelector('[name="name"]').value,
 
-    message: document.querySelector(
-      "textarea"
-    ).value
-  };
+email:
+document.querySelector('[name="email"]').value,
 
-  const response = await fetch(
-    "https://script.google.com/macros/s/AKfycbwvJZDhhdRHbiKSKlbpqB4wUPFcQv9dwS0Ob7qlyJDEqtLK_rKcRtIx78DWPawa_u4WwQ/exec",
-    {
-      method: "POST",
-      body: JSON.stringify(formData)
-    }
-  );
+company:
+document.querySelector('[name="company"]').value,
 
-  if(response.ok){
-      alert("Inquiry submitted!");
-      this.reset();
-  }else{
-      alert("Submission failed");
-  }
+country:
+document.querySelector('[name="country"]').value,
+
+product:
+document.querySelector('[name="product"]').value,
+
+quantity:
+document.querySelector('[name="quantity"]').value,
+
+message:
+document.querySelector('[name="message"]').value
+
+};
+
+try {
+
+const response =
+await fetch(
+SCRIPT_URL,
+{
+method:"POST",
+body:JSON.stringify(formData)
+}
+);
+
+const result =
+await response.json();
+
+if(result.result==="success"){
+
+document
+.getElementById("successMsg")
+.style.display="block";
+
+btn.textContent =
+"Inquiry Sent ✓";
+
+document
+.getElementById("contactForm")
+.reset();
+
+}
+else{
+
+alert(
+"Error : " +
+result.message
+);
+
+btn.textContent =
+"Send Inquiry ✦";
+
+}
+
+}
+catch(err){
+
+alert(
+"Submission failed."
+);
+
+btn.textContent =
+"Send Inquiry ✦";
+
+}
 
 });
+
 </script>
