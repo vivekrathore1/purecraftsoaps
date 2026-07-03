@@ -13,7 +13,7 @@ document.getElementById("contactForm")
   };
 
   const response = await fetch(
-    "https://script.google.com/macros/s/AKfycbxQNsk9VdbvXXyv8E9yZQk5sdbE1vQHgEKjwQGYYGpDBFsu4EIM6sXclRiZMWtgiFmjEQ/exec",
+    "https://script.google.com/macros/s/AKfycbxxRO_3IxzFhn_iYocMo34tVF3qXBQx-ePLOedMpD7kZa-eaI_DjRTwqG9d_bPJt2l6zw/exec",
     {
       method: "POST",
       body: JSON.stringify(formData)
